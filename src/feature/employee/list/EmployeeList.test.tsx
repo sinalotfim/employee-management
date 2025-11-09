@@ -1,5 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import EmployeeList from './EmployeeList';
 import { EmployeeListItem, EmplyeeStateStatus } from '@/core/model';
 import * as reduxHooks from '@/state/hooks';
