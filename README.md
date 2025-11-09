@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Employee Management Dashboard
 
-## Getting Started
+A simple dashboard for managing employee records with CRUD operations built using React, Next.js, Redux, Material UI, and Axios.
 
-First, run the development server:
+## Features
+
+- View employees in a sortable and paginated data grid
+- Add new employees
+- Edit existing employee information
+- Delete employees with confirmation
+- Search and filter employees by name, email, position, or salary
+- Error handling and loading states
+- Responsive design with Material UI
+
+## Tech Stack
+
+- **Framework**: Next.js with TypeScript
+- **State Management**: Redux Toolkit
+- **UI Library**: Material UI
+- **HTTP Client**: Axios
+- **Mock API**: json-server
+- **Code Formatting**: Prettier
+- **Testing**: Jest and React Testing Library
+
+## Setup Instructions
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm (v9 or later)
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/sinalotfim/employee-management.git
+    cd employee-management
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Code Formatting
+
+This project uses Prettier for code formatting. You can format your code using the following commands:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Format all files
+npm run format
+
+# Check if files are formatted correctly
+npm run format:check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run tests with Jest:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Run all tests
+npm test
 
-## Learn More
+# Run tests in watch mode
+npm run test:watch
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Running the Application
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Start the mock API server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm run server
+    ```
 
-## Deploy on Vercel
+    This will start json-server on http://localhost:3001
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. In a separate terminal, start the Next.js development server:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npm run dev
+    ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## API Endpoints
+
+The mock API provides the following endpoints:
+
+- `GET /employees` - Get all employees
+- `GET /employees/:id` - Get a specific employee
+- `POST /employees` - Create a new employee
+- `PUT /employees/:id` - Update an employee
+- `DELETE /employees/:id` - Delete an employee
+
+## Project Structure
+
+- `/src/app` - Next.js app router pages and providers
+- `/src/core` - Core functionality:
+    - `/model` - TypeScript interfaces and types
+    - `/service` - API services and clients
+    - `/hooks` - Custom React hooks
+    - `/context` - React context providers
+    - `/constant` - Constants and configuration
+    - `/ui` - Shared UI components
+- `/src/feature` - Feature-based components:
+    - `/employee` - Employee management components
+    - `/layout` - Layout components
+- `/src/state` - Redux state management:
+    - `/store.ts` - Redux store configuration
+    - `/hooks` - Redux hooks
+    - `/reducers` - Redux reducers
+    - `/thunks` - Redux async thunks
+- `/db.json` - Mock database for json-server
