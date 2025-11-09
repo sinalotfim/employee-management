@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-pattern 'eslint.config.js'",
         "lint:src": "eslint ./src --ext .js,.jsx,.ts,.tsx --ignore-pattern '**/*.test.*'",
         "lint:errors": "eslint ./src --ext .js,.jsx,.ts,.tsx --ignore-pattern '**/*.test.*' --quiet",
         "server": "json-server --watch db.json --port 3001",

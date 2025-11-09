@@ -24,7 +24,9 @@ export default function AppProvider({ children }: ProviderProps) {
 
     // Only run on client side
     useEffect(() => {
-        setIsMounted(true);
+        const timerId = setTimeout(() => setIsMounted(true), 0);
+
+        return () => clearTimeout(timerId);
     }, []);
 
     // During server-side rendering or initial client render, use a simplified structure
