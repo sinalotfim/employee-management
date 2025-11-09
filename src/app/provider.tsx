@@ -3,11 +3,15 @@
 // React dependencies
 import React, { useState, useEffect } from "react";
 
+// Redux dependencies
+import { Provider } from "react-redux";
+
 // MUI dependencies
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 // App dependencies
+import { store } from "@/state/store";
 import { theme } from "@/core/constant";
 
 interface ProviderProps {
@@ -25,14 +29,18 @@ export default function AppProvider({ children }: ProviderProps) {
 
   // During server-side rendering or initial client render, use a simplified structure
   if (!isMounted) {
-    return <div style={{ visibility: "hidden" }}>{children}</div>;
+    return (
+      <Provider store={store}>
+        <div style={{ visibility: "hidden" }}>{children}</div>
+      </Provider>
+    );
   }
 
   // Once mounted on client, render the full component with MUI
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {children}
+      <Provider store={store}>{children}</Provider>
     </ThemeProvider>
   );
 }
