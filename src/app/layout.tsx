@@ -28,7 +28,9 @@ interface RootLayoutProps {
 export default function AppLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
-      <body className={geistSans.className}>{children}</body>
+      <body className={geistSans.className}>
+        <AppProvider>{children}</AppProvider>
+      </body>
     </html>
   );
 }
