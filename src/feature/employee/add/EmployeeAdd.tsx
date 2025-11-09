@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
 // React dependencies
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 // Material UI dependencies
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import InputAdornment from '@mui/material/InputAdornment';
-import Stack from '@mui/material/Stack';
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import InputAdornment from "@mui/material/InputAdornment";
+import Stack from "@mui/material/Stack";
 
 // Validation dependencies
-import { z } from 'zod';
+import { z } from "zod";
 
 // Core models
-import { EmployeeFormData } from '@/core/model/form.model';
+import { EmployeeFormData } from "@/core/model/form.model";
 
 const defaultFormValues: EmployeeFormData = {
-    name: '',
-    email: '',
-    position: '',
+    name: "",
+    email: "",
+    position: "",
     salary: 0,
 };
 
@@ -34,12 +34,15 @@ interface EmployeeAddProps {
 
 export default function EmployeeAdd({ open, onClose, onSubmit }: EmployeeAddProps) {
     const schema = z.object({
-        name: z.string().min(1, 'Name is required'),
-        email: z.string().min(1, 'Email is required').refine((val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), {
-            message: 'Invalid email format',
-        }),
-        position: z.string().min(1, 'Position is required'),
-        salary: z.number().positive('Salary must be greater than 0'),
+        name: z.string().min(1, "Name is required"),
+        email: z
+            .string()
+            .min(1, "Email is required")
+            .refine(val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), {
+                message: "Invalid email format",
+            }),
+        position: z.string().min(1, "Position is required"),
+        salary: z.number().positive("Salary must be greater than 0"),
     });
 
     const [formData, setFormData] = useState<EmployeeFormData>({
@@ -68,7 +71,7 @@ export default function EmployeeAdd({ open, onClose, onSubmit }: EmployeeAddProp
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        const newValue = name === 'salary' ? +value : value;
+        const newValue = name === "salary" ? +value : value;
         setFormData(prev => ({
             ...prev,
             [name]: newValue,
@@ -99,7 +102,7 @@ export default function EmployeeAdd({ open, onClose, onSubmit }: EmployeeAddProp
                 paper: {
                     elevation: 3,
                     sx: { borderRadius: 2 },
-                }
+                },
             }}
         >
             <DialogTitle sx={{ pb: 1, pt: 2, px: 3 }}>Add New Employee</DialogTitle>

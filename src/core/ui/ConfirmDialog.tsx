@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 // Material UI dependencies
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
 interface ConfirmDialogProps {
     open: boolean;

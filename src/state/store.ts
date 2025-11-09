@@ -1,8 +1,8 @@
 // Redux Toolkit dependencies
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
 // Reducers dependencies
-import employeeReducer from './reducers/employee.reducer';
+import employeeReducer from "./reducers/employee.reducer";
 
 export const store = configureStore({
     reducer: {

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 // MUI dependencies
-import { AppBar, Toolbar, Typography } from '@mui/material';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
 export default function LayoutHeader() {
     return (

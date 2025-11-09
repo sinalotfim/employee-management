@@ -1,8 +1,8 @@
 // Axios dependencies
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 // Models
-import { ApiClientConfig } from '../model';
+import { ApiClientConfig } from "../model";
 
 export class ApiClient {
     protected instance: AxiosInstance;
@@ -12,7 +12,7 @@ export class ApiClient {
             baseURL: config.baseURL,
             timeout: config.timeout || 10000,
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
                 ...config.headers,
             },
         });
@@ -60,4 +60,4 @@ export class ApiClient {
     }
 }
 
-export const apiClient = new ApiClient({ baseURL: 'http://localhost:3001' });
+export const apiClient = new ApiClient({ baseURL: "http://localhost:3001" });

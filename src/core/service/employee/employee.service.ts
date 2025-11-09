@@ -1,11 +1,11 @@
 // API client import
-import { apiClient } from '../api.client';
+import { apiClient } from "../api.client";
 
 // Types dependencies
-import { EmployeeListItem, EmployeeFormData } from '../../model';
+import { EmployeeListItem, EmployeeFormData } from "../../model";
 
 // Constants
-const ENDPOINT = '/employees';
+const ENDPOINT = "/employees";
 
 class EmployeeServiceClass {
     async list(): Promise<EmployeeListItem[]> {

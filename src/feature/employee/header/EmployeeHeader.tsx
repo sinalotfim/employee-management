@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 // MUI dependencies
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography } from "@mui/material";
 
 interface EmployeeHeaderProps {
     onAddClick: () => void;
@@ -13,7 +13,7 @@ export default function EmployeeHeader({ onAddClick }: EmployeeHeaderProps) {
     };
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
             <Typography variant="h5" component="h2">
                 Employees
             </Typography>

@@ -1,11 +1,11 @@
 // Redux Toolkit dependencies
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Types dependencies
-import { EmployeeListItem, EmployeeState, EmplyeeStateStatus } from '@/core/model';
+import { EmployeeListItem, EmployeeState, EmplyeeStateStatus } from "@/core/model";
 
 // Thunks
-import { employeeList, employeeAdd, employeeEdit, employeeDelete } from '../thunks/employee.thunks';
+import { employeeList, employeeAdd, employeeEdit, employeeDelete } from "../thunks/employee.thunks";
 
 const initialState: EmployeeState = {
     employeeList: [],
@@ -15,7 +15,7 @@ const initialState: EmployeeState = {
 };
 
 const employeeSlice = createSlice({
-    name: 'employee',
+    name: "employee",
     initialState,
     reducers: {
         setSelectedEmployee: (state, action: PayloadAction<EmployeeListItem | null>) => {
@@ -34,7 +34,7 @@ const employeeSlice = createSlice({
             })
             .addCase(employeeList.rejected, (state: EmployeeState, action) => {
                 state.status = EmplyeeStateStatus.FAILED;
-                state.error = action.error.message || 'Failed to fetch employees';
+                state.error = action.error.message || "Failed to fetch employees";
             })
             // Add employee
             .addCase(employeeAdd.fulfilled, (state: EmployeeState, action) => {

@@ -1,4 +1,4 @@
-import { AlertMessageSeverity } from './alert.model';
+import { AlertMessageSeverity } from "./alert.model";
 
 export interface AlertContextState {
     alertOpen: boolean;

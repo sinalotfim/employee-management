@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 // Material UI dependencies
-import { Alert, Snackbar } from '@mui/material';
+import { Alert, Snackbar } from "@mui/material";
 
 // Models
-import { AlertMessageSeverity } from '../model';
+import { AlertMessageSeverity } from "../model";
 
 interface AlertMessageProps {
     open: boolean;
@@ -23,9 +23,9 @@ export default function AlertMessage({ open, message, severity, onClose }: Alert
             open={open}
             autoHideDuration={6000}
             onClose={handleClose}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         >
-            <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
+            <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
                 {message}
             </Alert>
         </Snackbar>

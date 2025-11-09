@@ -1,2 +1,2 @@
 // Import jest-dom utilities
-require('@testing-library/jest-dom');
+require("@testing-library/jest-dom");

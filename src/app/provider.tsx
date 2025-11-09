@@ -15,32 +15,32 @@ import { store } from "@/state/store";
 import { theme } from "@/core/constant";
 
 interface ProviderProps {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 export default function AppProvider({ children }: ProviderProps) {
-  // Use state to control mounting to avoid hydration issues in emotion
-  const [isMounted, setIsMounted] = useState(false);
+    // Use state to control mounting to avoid hydration issues in emotion
+    const [isMounted, setIsMounted] = useState(false);
 
-  // Only run on client side
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    // Only run on client side
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
-  // During server-side rendering or initial client render, use a simplified structure
-  if (!isMounted) {
+    // During server-side rendering or initial client render, use a simplified structure
+    if (!isMounted) {
+        return (
+            <Provider store={store}>
+                <div style={{ visibility: "hidden" }}>{children}</div>
+            </Provider>
+        );
+    }
+
+    // Once mounted on client, render the full component with MUI
     return (
-      <Provider store={store}>
-        <div style={{ visibility: "hidden" }}>{children}</div>
-      </Provider>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Provider store={store}>{children}</Provider>
+        </ThemeProvider>
     );
-  }
-
-  // Once mounted on client, render the full component with MUI
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Provider store={store}>{children}</Provider>
-    </ThemeProvider>
-  );
 }

@@ -1,21 +1,21 @@
-import { render, screen } from '@testing-library/react';
-import EmployeeList from './EmployeeList';
-import { EmployeeListItem, EmplyeeStateStatus } from '@/core/model';
-import * as reduxHooks from '@/state/hooks';
+import { render, screen } from "@testing-library/react";
+import EmployeeList from "./EmployeeList";
+import { EmployeeListItem, EmplyeeStateStatus } from "@/core/model";
+import * as reduxHooks from "@/state/hooks";
 
 // Mock the Redux hooks
-jest.mock('@/state/hooks', () => ({
+jest.mock("@/state/hooks", () => ({
     useAppSelector: jest.fn(),
 }));
 
 // Mock the EmployeeListSkeleton component
-jest.mock('./EmployeeListSkeleton', () => ({
+jest.mock("./EmployeeListSkeleton", () => ({
     __esModule: true,
     default: () => <div data-testid="employee-list-skeleton">Loading...</div>,
 }));
 
 // Mock the MUI DataGrid component
-jest.mock('@mui/x-data-grid', () => ({
+jest.mock("@mui/x-data-grid", () => ({
     DataGrid: ({ rows, columns }: { rows: any[]; columns: any[] }) => (
         <div data-testid="data-grid">
             <table>
@@ -52,20 +52,20 @@ jest.mock('@mui/x-data-grid', () => ({
     ),
 }));
 
-describe('EmployeeList Component', () => {
+describe("EmployeeList Component", () => {
     const mockEmployees: EmployeeListItem[] = [
         {
-            id: 'abcd',
-            name: 'John Doe',
-            email: 'john@example.com',
-            position: 'Developer',
+            id: "abcd",
+            name: "John Doe",
+            email: "john@example.com",
+            position: "Developer",
             salary: 75000,
         },
         {
-            id: 'efgh',
-            name: 'Jane Smith',
-            email: 'jane@example.com',
-            position: 'Designer',
+            id: "efgh",
+            name: "Jane Smith",
+            email: "jane@example.com",
+            position: "Designer",
             salary: 65000,
         },
     ];
@@ -77,9 +77,9 @@ describe('EmployeeList Component', () => {
         jest.clearAllMocks();
     });
 
-    test('renders loading skeleton when status is LOADING', () => {
+    test("renders loading skeleton when status is LOADING", () => {
         // Mock the Redux state to return LOADING status
-        jest.spyOn(reduxHooks, 'useAppSelector').mockReturnValue({
+        jest.spyOn(reduxHooks, "useAppSelector").mockReturnValue({
             status: EmplyeeStateStatus.LOADING,
         });
 
@@ -92,12 +92,12 @@ describe('EmployeeList Component', () => {
         );
 
         // Check if the skeleton is rendered
-        expect(screen.getByTestId('employee-list-skeleton')).toBeInTheDocument();
+        expect(screen.getByTestId("employee-list-skeleton")).toBeInTheDocument();
     });
 
-    test('renders DataGrid with employees when not in loading state', () => {
+    test("renders DataGrid with employees when not in loading state", () => {
         // Mock the Redux state to return SUCCEEDED status
-        jest.spyOn(reduxHooks, 'useAppSelector').mockReturnValue({
+        jest.spyOn(reduxHooks, "useAppSelector").mockReturnValue({
             status: EmplyeeStateStatus.SUCCEEDED,
         });
 
@@ -109,14 +109,14 @@ describe('EmployeeList Component', () => {
             />
         );
 
-        expect(screen.getByTestId('data-grid')).toBeInTheDocument();
-        expect(screen.getByText('John Doe')).toBeInTheDocument();
-        expect(screen.getByText('jane@example.com')).toBeInTheDocument();
+        expect(screen.getByTestId("data-grid")).toBeInTheDocument();
+        expect(screen.getByText("John Doe")).toBeInTheDocument();
+        expect(screen.getByText("jane@example.com")).toBeInTheDocument();
     });
 
-    test('calls onDeleteClick when delete button is clicked', () => {
+    test("calls onDeleteClick when delete button is clicked", () => {
         // Mock the Redux state to return SUCCEEDED status
-        jest.spyOn(reduxHooks, 'useAppSelector').mockReturnValue({
+        jest.spyOn(reduxHooks, "useAppSelector").mockReturnValue({
             status: EmplyeeStateStatus.SUCCEEDED,
         });
 
@@ -132,9 +132,9 @@ describe('EmployeeList Component', () => {
         expect(mockOnDeleteClick).toHaveBeenCalledWith(1);
     });
 
-    test('calls onEditClick when edit button is clicked', () => {
+    test("calls onEditClick when edit button is clicked", () => {
         // Mock the Redux state to return SUCCEEDED status
-        jest.spyOn(reduxHooks, 'useAppSelector').mockReturnValue({
+        jest.spyOn(reduxHooks, "useAppSelector").mockReturnValue({
             status: EmplyeeStateStatus.SUCCEEDED,
         });
 

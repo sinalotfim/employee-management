@@ -1,11 +1,11 @@
 // React dependencies
-import { useState, useMemo } from 'react';
+import { useState, useMemo } from "react";
 
 // Models
-import { EmployeeListItem } from '@/core/model';
+import { EmployeeListItem } from "@/core/model";
 
 export function useEmployeeFilter(employees: EmployeeListItem[]) {
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState("");
 
     const filtered = useMemo(() => {
         const value = filter.trim().toLowerCase();

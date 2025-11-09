@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
 // React dependencies
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 // Material UI dependencies
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import InputAdornment from '@mui/material/InputAdornment';
-import Stack from '@mui/material/Stack';
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import InputAdornment from "@mui/material/InputAdornment";
+import Stack from "@mui/material/Stack";
 
 // Validation dependencies
-import { z } from 'zod';
+import { z } from "zod";
 
 // Core models
-import { EmployeeFormData } from '@/core/model';
+import { EmployeeFormData } from "@/core/model";
 
 interface EmployeeEditProps {
     open: boolean;
@@ -28,15 +28,15 @@ interface EmployeeEditProps {
 
 export default function EmployeeEdit({ open, employee, onClose, onSubmit }: EmployeeEditProps) {
     const schema = z.object({
-        name: z.string().min(1, 'Name is required'),
+        name: z.string().min(1, "Name is required"),
         email: z
             .string()
-            .min(1, 'Email is required')
+            .min(1, "Email is required")
             .refine(val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), {
-                message: 'Invalid email format',
+                message: "Invalid email format",
             }),
-        position: z.string().min(1, 'Position is required'),
-        salary: z.number().positive('Salary must be greater than 0'),
+        position: z.string().min(1, "Position is required"),
+        salary: z.number().positive("Salary must be greater than 0"),
     });
 
     // Initialize form data with employee data
@@ -63,7 +63,7 @@ export default function EmployeeEdit({ open, employee, onClose, onSubmit }: Empl
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        const newValue = name === 'salary' ? +value : value;
+        const newValue = name === "salary" ? +value : value;
         setFormData(prev => ({
             ...prev,
             [name]: newValue,

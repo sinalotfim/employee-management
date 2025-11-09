@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 // MUI dependencies
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from "@mui/material";
 
 export default function LayoutFooter() {
     return (
@@ -10,7 +10,7 @@ export default function LayoutFooter() {
             sx={{
                 py: 3,
                 px: 2,
-                mt: 'auto',
+                mt: "auto",
                 backgroundColor: theme => theme.palette.grey[100],
             }}
         >

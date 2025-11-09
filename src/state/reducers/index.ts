@@ -1,1 +1,1 @@
-export * from './employee.reducer';
+export * from "./employee.reducer";

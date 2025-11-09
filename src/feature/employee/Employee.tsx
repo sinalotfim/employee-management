@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
 // React dependencies
-import { useState, useEffect, useDeferredValue } from 'react';
+import { useState, useEffect, useDeferredValue } from "react";
 
 // Material UI dependencies
-import { Paper } from '@mui/material';
+import { Paper } from "@mui/material";
 
 // Redux and UI hooks
-import { useAppDispatch, useAppSelector } from '@/state/hooks';
-import { employeeList, employeeDelete, employeeAdd, employeeEdit } from '@/state';
-import { useUI, useEmployeeFilter } from '@/core/hooks';
+import { useAppDispatch, useAppSelector } from "@/state/hooks";
+import { employeeList, employeeDelete, employeeAdd, employeeEdit } from "@/state";
+import { useUI, useEmployeeFilter } from "@/core/hooks";
 
 // Models
-import { EmployeeListItem, EmplyeeStateStatus, EmployeeFormData, AlertMessageSeverity } from '@/core/model';
+import { EmployeeListItem, EmplyeeStateStatus, EmployeeFormData, AlertMessageSeverity } from "@/core/model";
 
 // UI components
-import EmployeeHeader from './header/EmployeeHeader';
-import EmployeeFilter from './filter/EmployeeFilter';
-import EmployeeList from './list/EmployeeList';
-import EmployeeAdd from './add/EmployeeAdd';
-import EmployeeEdit from './edit/EmployeeEdit';
+import EmployeeHeader from "./header/EmployeeHeader";
+import EmployeeFilter from "./filter/EmployeeFilter";
+import EmployeeList from "./list/EmployeeList";
+import EmployeeAdd from "./add/EmployeeAdd";
+import EmployeeEdit from "./edit/EmployeeEdit";
 
 export default function Employee() {
     const { employeeList: list, status, error } = useAppSelector(state => state.employeeList);
@@ -57,7 +57,7 @@ export default function Employee() {
         dispatch(employeeAdd(formData))
             .unwrap()
             .then(() => {
-                alert.showAlert('Employee added successfully', AlertMessageSeverity.SUCCESS);
+                alert.showAlert("Employee added successfully", AlertMessageSeverity.SUCCESS);
                 setShowAdd(false);
             })
             .catch((err: Error) => {
@@ -71,7 +71,7 @@ export default function Employee() {
         dispatch(employeeEdit({ id: selectedEmployee.id, employee: formData }))
             .unwrap()
             .then(() => {
-                alert.showAlert('Employee updated successfully', AlertMessageSeverity.SUCCESS);
+                alert.showAlert("Employee updated successfully", AlertMessageSeverity.SUCCESS);
                 setShowEdit(false);
             })
             .catch((err: Error) => {
@@ -92,13 +92,13 @@ export default function Employee() {
     };
 
     const handleDeleteClick = (id: string) => {
-        confirm.showConfirm('Confirm Action', 'Are you sure you want to perform this action?', () => {
+        confirm.showConfirm("Confirm Action", "Are you sure you want to perform this action?", () => {
             if (!id) return;
 
             dispatch(employeeDelete(id))
                 .unwrap()
                 .then(() => {
-                    alert.showAlert('Employee deleted successfully', AlertMessageSeverity.SUCCESS);
+                    alert.showAlert("Employee deleted successfully", AlertMessageSeverity.SUCCESS);
                 })
                 .catch((err: Error) => {
                     alert.showAlert(`Error deleting employee: ${err.message}`, AlertMessageSeverity.ERROR);

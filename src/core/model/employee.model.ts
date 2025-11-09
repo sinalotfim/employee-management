@@ -7,10 +7,10 @@ export interface EmployeeListItem {
 }
 
 export enum EmplyeeStateStatus {
-    IDLE = 'idle',
-    LOADING = 'loading',
-    SUCCEEDED = 'succeeded',
-    FAILED = 'failed',
+    IDLE = "idle",
+    LOADING = "loading",
+    SUCCEEDED = "succeeded",
+    FAILED = "failed",
 }
 
 export interface EmployeeState {

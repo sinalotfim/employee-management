@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
 // MUI dependencies
-import { DataGrid, GridColDef, GridActionsCellItem } from '@mui/x-data-grid';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import { Box } from '@mui/material';
+import { DataGrid, GridColDef, GridActionsCellItem } from "@mui/x-data-grid";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { Box } from "@mui/material";
 
 // Custom components
-import EmployeeListSkeleton from './EmployeeListSkeleton';
+import EmployeeListSkeleton from "./EmployeeListSkeleton";
 
 // Redux dependencies
-import { useAppSelector } from '@/state/hooks';
+import { useAppSelector } from "@/state/hooks";
 
 // Core dependencies
-import { EmployeeListItem, EmplyeeStateStatus } from '@/core/model';
+import { EmployeeListItem, EmplyeeStateStatus } from "@/core/model";
 
 interface EmployeeListProps {
     filteredEmployees: EmployeeListItem[];
@@ -33,25 +33,25 @@ export default function EmployeeList({ filteredEmployees, onDeleteClick, onEditC
     };
 
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'name', headerName: 'Name', width: 200 },
-        { field: 'email', headerName: 'Email', width: 250 },
-        { field: 'position', headerName: 'Position', width: 200 },
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "name", headerName: "Name", width: 200 },
+        { field: "email", headerName: "Email", width: 250 },
+        { field: "position", headerName: "Position", width: 200 },
         {
-            field: 'salary',
-            headerName: 'Salary',
-            type: 'number',
+            field: "salary",
+            headerName: "Salary",
+            type: "number",
             width: 130,
             valueFormatter: value => {
-                if (!value) return '';
+                if (!value) return "";
 
                 return `$${Number(value).toLocaleString()}`;
             },
         },
         {
-            field: 'actions',
-            type: 'actions',
-            headerName: 'Actions',
+            field: "actions",
+            type: "actions",
+            headerName: "Actions",
             width: 100,
             getActions: params => [
                 <GridActionsCellItem
@@ -75,7 +75,7 @@ export default function EmployeeList({ filteredEmployees, onDeleteClick, onEditC
     }
 
     return (
-        <Box sx={{ height: 400, width: '100%' }}>
+        <Box sx={{ height: 400, width: "100%" }}>
             <DataGrid
                 rows={filteredEmployees}
                 columns={columns}
