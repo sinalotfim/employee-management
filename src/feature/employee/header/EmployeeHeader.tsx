@@ -1,8 +1,5 @@
 'use client';
 
-// React dependencies
-import React from 'react';
-
 // MUI dependencies
 import { Box, Button, Typography } from '@mui/material';
 
