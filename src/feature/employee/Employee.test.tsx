@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Employee from './Employee';
 import { EmployeeListItem, EmplyeeStateStatus, AlertMessageSeverity } from '@/core/model';
 import * as reduxHooks from '@/state/hooks';
@@ -289,7 +289,7 @@ describe('Employee Component', () => {
     test('opens edit modal when edit button is clicked', () => {
         render(<Employee />);
 
-        const editButton = screen.getByTestId('edit-1');
+        const editButton = screen.getByTestId('edit-abcd');
         fireEvent.click(editButton);
 
         expect(screen.getByTestId('employee-edit-modal')).toBeInTheDocument();
@@ -299,7 +299,7 @@ describe('Employee Component', () => {
     test('closes edit modal when close button is clicked', () => {
         render(<Employee />);
 
-        const editButton = screen.getByTestId('edit-1');
+        const editButton = screen.getByTestId('edit-abcd');
         fireEvent.click(editButton);
 
         const closeButton = screen.getByTestId('edit-close');
@@ -311,7 +311,7 @@ describe('Employee Component', () => {
     test('shows confirm dialog when delete button is clicked', () => {
         render(<Employee />);
 
-        const deleteButton = screen.getByTestId('delete-1');
+        const deleteButton = screen.getByTestId('delete-abcd');
         fireEvent.click(deleteButton);
 
         expect(mockConfirm.showConfirm).toHaveBeenCalledWith(
