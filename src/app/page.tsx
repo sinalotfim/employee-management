@@ -2,7 +2,12 @@
 
 // Components
 import Layout from "@/feature/layout/Layout";
+import Employee from "@/feature/employee/Employee";
 
 export default function AppPage() {
-  return <Layout>{null}</Layout>;
+  return (
+    <Layout>
+      <Employee />
+    </Layout>
+  );
 }

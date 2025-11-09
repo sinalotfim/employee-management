@@ -1,1 +1,1 @@
-export * from "./theme.constant";
+export * from './theme.constant';
